@@ -8,6 +8,8 @@ public class InputReader : ScriptableObject, IPlayerActions
 {
     private InputActions _inputActions;
 
+    public Vector2 MousePos => _inputActions.Player.Look.ReadValue<Vector2>();
+    
     #region EVENT
     public event UnityAction<Vector2> Look = delegate { };
     
@@ -31,5 +33,6 @@ public class InputReader : ScriptableObject, IPlayerActions
     public void OnLook(InputAction.CallbackContext context)
     {
         Look.Invoke(context.ReadValue<Vector2>());
+        
     }
 }
