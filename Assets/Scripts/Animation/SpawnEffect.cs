@@ -20,8 +20,7 @@ public class SpawnEffects : MonoBehaviour
 
     public void PlayEffects()
     {
-        foreach (var animatable in _effects)
-            animatable.PlayAnimation(transform, animationDuration);
+        PlayAnimation(0);
         
         if (spawnVFX != null)
             Instantiate(spawnVFX, transform.position, Quaternion.identity);
@@ -32,6 +31,8 @@ public class SpawnEffects : MonoBehaviour
 
     private void PlayAnimation(int index)
     {
+        if (index < 0 || index >= animatableFactoryList.Count) return;
+        
         _effects[index].PlayAnimation(transform, animationDuration).OnComplete(() =>
         {
             PlayAnimation(index + 1);

@@ -430,9 +430,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnVFX: {fileID: 0}
-  animationDuration: 1
+  animationDuration: 0.5
   animatableFactoryList:
-  - {fileID: 11400000, guid: 814b7724b6f372c4dab4134c0e429e62, type: 2}
+  - {fileID: 11400000, guid: 2877726725b150a458271725df6b6d64, type: 2}
+  - {fileID: 11400000, guid: 96ecc270572b70a428cc4b0474f8b96b, type: 2}
 --- !u!1001 &1492223947
 PrefabInstance:
   m_ObjectHideFlags: 0
