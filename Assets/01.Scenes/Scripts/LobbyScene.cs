@@ -1,15 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MainScene : SceneBase
+public class LobbyScene : SceneBase
 {
     public override void OnEnter()
     {
         base.OnEnter();
         
         DataManager.Instance.Init();
-        PlayerManager.Instance.Init(DataManager.Instance);
         
-        Debug.Log(DataManager.Instance);
+        Debug.Log("EnterLobbyScene");
     }
 
     public override void OnExit()

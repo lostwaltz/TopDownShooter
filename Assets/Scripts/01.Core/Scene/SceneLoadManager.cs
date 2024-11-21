@@ -8,24 +8,24 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : SingletonDontDestroy<SceneLoadManager>
 {
-    private SceneDataBase _dataBase;
+    private SceneDataBase dataBase;
 
     public static string CurrentScene { get; private set; }
     public static string PrevScene { get; private set; }
     public static string NextScene { get; private set; }
 
-    private readonly Dictionary<string, SceneBase> _sceneDic = new();
+    private readonly Dictionary<string, SceneBase> sceneDic = new();
 
-    private Action<float> _onLoadingProgressUpdate;
+    private Action<float> onLoadingProgressUpdate;
 
     protected override void Awake()
     {
         base.Awake();
 
-        _dataBase = Resources.Load<SceneDataBase>(Utils.Str.Clear().Append(Constants.Path.DataPath).Append("SceneData")
+        dataBase = Resources.Load<SceneDataBase>(Utils.Str.Clear().Append(Constants.Path.DataPath).Append("SceneData")
             .ToString());
 
-        foreach (var data in _dataBase.sceneDataList)
+        foreach (var data in dataBase.sceneDataList)
         {
             Type type = Type.GetType(data.sceneAsset.name);
 
@@ -39,11 +39,11 @@ public class SceneLoadManager : SingletonDontDestroy<SceneLoadManager>
 
             if (method == null) return;
 
-            _sceneDic.Add(data.sceneAsset.name, (SceneBase)method.Invoke(null, null));
+            sceneDic.Add(data.sceneAsset.name, (SceneBase)method.Invoke(null, null));
         }
 
         CurrentScene = SceneManager.GetActiveScene().name;
-        _sceneDic[CurrentScene].OnEnter();
+        sceneDic[CurrentScene].OnEnter();
     }
 
     public void LoadScene(string sceneName)
@@ -64,7 +64,7 @@ public class SceneLoadManager : SingletonDontDestroy<SceneLoadManager>
         {
             yield return null;
 
-            _onLoadingProgressUpdate?.Invoke(op.progress);
+            onLoadingProgressUpdate?.Invoke(op.progress);
 
             if (op.progress < 0.9f)
                 continue;
@@ -77,8 +77,8 @@ public class SceneLoadManager : SingletonDontDestroy<SceneLoadManager>
         PrevScene = CurrentScene;
         CurrentScene = NextScene;
 
-        _sceneDic[PrevScene].OnExit();
-        _sceneDic[CurrentScene].OnEnter();
+        sceneDic[PrevScene].OnExit();
+        sceneDic[CurrentScene].OnEnter();
 
     }
 }
