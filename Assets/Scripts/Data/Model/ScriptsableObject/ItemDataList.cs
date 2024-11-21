@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 namespace SO
 {
-    [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObjects/ItemData", order = 1)]
+    [CreateAssetMenu(fileName = "ItemData", menuName = "Data/ItemData")]
     public class ItemDataList : ScriptableObject
     {
         [SerializeField] public List<ItemData> itemDataList = new();

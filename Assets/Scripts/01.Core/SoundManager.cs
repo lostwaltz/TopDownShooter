@@ -10,7 +10,7 @@ public class SoundManager : SingletonDontDestroy<SoundManager>
     [SerializeField] private AudioSource musicAudioSource;
     [SerializeField] private AudioClip musicClip;
     
-    [SerializeField] private ObjectPool objectPool;
+    //[SerializeField] private ObjectPool objectPool;
 
 
     protected override void Awake()
@@ -35,9 +35,9 @@ public class SoundManager : SingletonDontDestroy<SoundManager>
 
     public void PlayClip(AudioClip clip)
     {
-        GameObject obj = objectPool.SpawnFromPool("SoundSource");
-        obj.SetActive(true);
-        SoundSource soundSource = obj.GetComponent<SoundSource>();
-        soundSource.Play(clip, soundEffectVolume, soundEffectPitchVariance);
+        //GameObject obj = objectPool.SpawnFromPool("SoundSource");
+        //obj.SetActive(true);
+        //SoundSource soundSource = obj.GetComponent<SoundSource>();
+        //soundSource.Play(clip, soundEffectVolume, soundEffectPitchVariance);
     }
 }

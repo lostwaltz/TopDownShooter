@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using UnityEngine;
 
 public class Utils
 {
+    public static readonly StringBuilder Str = new();
     public static GameObject FindChild(GameObject go, string name = null, bool recursive = false)
     {
         return FindChild<Transform>(go, name, recursive).gameObject;

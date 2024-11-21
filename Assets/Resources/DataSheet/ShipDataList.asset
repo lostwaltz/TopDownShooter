@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2115ea67e1aab2148a52459ecd598398, type: 3}
-  m_Name: ItemData
+  m_Script: {fileID: 11500000, guid: f60ca33cfe3b5a74e97900ebc450d5fe, type: 3}
+  m_Name: ShipDataList
   m_EditorClassIdentifier: 
-  itemDataList: []
+  shipDataList:
+  - ID: 100000
+    shipSpeed: 100
